@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import Sidebar from "../components/Sidebar";
 
 const Layout = ({ children, pagina = "" }) => {
   return (
@@ -10,8 +11,10 @@ const Layout = ({ children, pagina = "" }) => {
       </Head>
 
       <div className="md:flex">
-        <aside className="md:w-1/4">Sidebar aquí</aside>
-        <main className="md:w-3/4">{children}</main>
+        <aside className="md:min-w-[24rem]">
+          <Sidebar />
+        </aside>
+        <main className="h-screen overflow-scroll">{children}</main>
       </div>
     </>
   );
