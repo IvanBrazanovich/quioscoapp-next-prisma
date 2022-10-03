@@ -9,7 +9,7 @@ export default function Home() {
   const { categoriaActual } = useQuiosco();
   return (
     <Layout pagina={`Menú ${categoriaActual?.nombre}`}>
-      <div className="p-10 ">
+      <div className="pt-10 pb-5 ">
         <h2 className="text-4xl font-black">{categoriaActual?.nombre}</h2>
         <p className="text-xl mt-10">
           Elige y personaliza tu pedido a continuación

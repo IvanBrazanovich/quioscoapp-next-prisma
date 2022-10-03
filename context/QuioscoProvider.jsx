@@ -5,15 +5,36 @@ const QuioscoContext = createContext();
 const QuioscoProvider = ({ children }) => {
   const [categorias, setCategorias] = useState([]);
   const [categoriaActual, setCategoriaActual] = useState({});
-
-  const handleClickCategoria = (categoria) => {
-    setCategoriaActual(categoria);
-  };
+  const [producto, setProducto] = useState({});
+  const [modal, setModal] = useState(false);
+  const [pedido, setPedido] = useState([]);
 
   const getCategorias = async () => {
     const response = await fetch("/api/categorias");
     const res = await response.json();
     setCategorias(res);
+  };
+  const handleClickCategoria = (categoria) => {
+    setCategoriaActual(categoria);
+  };
+
+  const handleClickProducto = (producto) => {
+    setProducto(producto);
+  };
+
+  const handleChangeModal = () => {
+    setModal(!modal);
+  };
+
+  const handleChangePedido = ({ categoriaId, imagen, ...producto }) => {
+    const hay = pedido.some((p) => p.id === producto.id);
+
+    if (!hay) {
+      setPedido([...pedido, producto]);
+    } else {
+      const newArr = pedido.map((p) => (p.id === producto.id ? producto : p));
+      setPedido(newArr);
+    }
   };
 
   useEffect(() => {
@@ -30,6 +51,12 @@ const QuioscoProvider = ({ children }) => {
         categorias,
         categoriaActual,
         handleClickCategoria,
+        handleClickProducto,
+        handleChangeModal,
+        modal,
+        producto,
+        handleChangePedido,
+        pedido,
       }}
     >
       {children}
