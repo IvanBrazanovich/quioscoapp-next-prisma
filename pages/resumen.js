@@ -10,7 +10,11 @@ const resumen = () => {
       {" "}
       <div className=" px-4">
         <h2 className="text-4xl font-black">Resumen</h2>
-        <p className="text-xl mt-5">Revisa tu pedido</p>
+        <p className="text-xl mt-5">
+          {pedido.length > 0
+            ? "Revisa tu pedido"
+            : "No hay ningún elemento en tu lista de pedidos, comienza agregando uno."}
+        </p>
       </div>
       <div className="flex flex-col gap-2">
         {pedido?.map((producto) => (

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { transformCurrency } from "../helpers/helpers";
+import useQuiosco from "../hooks/useQuiosco";
 
 const ResumenProducto = ({ producto }) => {
+  const { cambiarCantidadResumen, handleEliminarProducto } = useQuiosco();
   const { imagen, nombre, precio, cantidad } = producto;
 
   return (
@@ -11,21 +13,24 @@ const ResumenProducto = ({ producto }) => {
         src={`/assets/img/${imagen}.jpg`}
         width={150}
         height={200}
-        alt={`Foto de platillo ${producto.nombre}`}
+        alt={`Foto de platillo ${nombre}`}
       />
 
       <div className="wrapper grow shrink">
-        <h3 className="heading text-3xl font-bold my-2">{producto.nombre}</h3>
-        <p className="font-bold text-lg my-2">Cantidad: {producto.cantidad}</p>
+        <h3 className="heading text-3xl font-bold my-2">{nombre}</h3>
+        <p className="font-bold text-lg my-2">Cantidad: {cantidad}</p>
         <p className="font-extrabold  text-lg my-2 text-amber-500">
-          Precio: {transformCurrency(producto.precio)}
+          Precio: {transformCurrency(precio)}
         </p>
 
-        <p>Subtotal: {transformCurrency(producto.precio * cantidad)}</p>
+        <p>Subtotal: {transformCurrency(precio * cantidad)}</p>
       </div>
 
       <div className="wrapper  flex flex-col  gap-4 min-w-[10rem]">
-        <button className="py-2 w-10/12 flex gap-2 justify-center uppercase rounded-md bg-blue-500 text-center font-bold text-white">
+        <button
+          onClick={(e) => cambiarCantidadResumen(producto.id)}
+          className="py-2 w-10/12 flex gap-2 justify-center uppercase rounded-md bg-blue-500 text-center font-bold text-white"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -42,7 +47,10 @@ const ResumenProducto = ({ producto }) => {
           </svg>
           Editar
         </button>
-        <button className="py-2 w-10/12 flex gap-2 justify-center uppercase rounded-md bg-red-500 text-center font-bold text-white">
+        <button
+          onClick={(e) => handleEliminarProducto(producto.id)}
+          className="py-2 w-10/12 flex gap-2 justify-center uppercase rounded-md bg-red-500 text-center font-bold text-white"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

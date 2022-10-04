@@ -33,7 +33,7 @@ const Layout = ({ children, pagina = "" }) => {
         <aside className="md:min-w-[24rem]">
           <Sidebar />
         </aside>
-        <main className="h-screen overflow-scroll pt-10 pb-5 w-full ">
+        <main className="h-screen overflow-y-scroll pt-10 pb-5 w-full ">
           <Pasos />
           {children}
         </main>
