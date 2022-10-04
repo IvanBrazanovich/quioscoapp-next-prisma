@@ -3,8 +3,9 @@ import ResumenProducto from "../components/ResumenProducto";
 import useQuiosco from "../hooks/useQuiosco";
 import Layout from "../layout/layout";
 
-const resumen = () => {
+const Resumen = () => {
   const { pedido } = useQuiosco();
+
   return (
     <Layout pagina="Resumen">
       {" "}
@@ -25,4 +26,4 @@ const resumen = () => {
   );
 };
 
-export default resumen;
+export default Resumen;

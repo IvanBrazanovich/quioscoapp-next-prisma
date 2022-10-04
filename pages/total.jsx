@@ -3,8 +3,9 @@ import { transformCurrency } from "../helpers/helpers";
 import useQuiosco from "../hooks/useQuiosco";
 import Layout from "../layout/layout";
 
-const total = () => {
+const Total = () => {
   const { pedido, enviarPedido } = useQuiosco();
+
   const [nombre, setNombre] = useState("");
 
   const consultarPedido = () => {
@@ -63,4 +64,4 @@ const total = () => {
   );
 };
 
-export default total;
+export default Total;
