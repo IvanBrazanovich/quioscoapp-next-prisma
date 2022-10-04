@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const QuioscoContext = createContext();
 
@@ -31,9 +32,11 @@ const QuioscoProvider = ({ children }) => {
 
     if (!hay) {
       setPedido([...pedido, producto]);
+      toast.success("Agregado correctamente");
     } else {
       const newArr = pedido.map((p) => (p.id === producto.id ? producto : p));
       setPedido(newArr);
+      toast.success("Guardado correctamente");
     }
   };
 

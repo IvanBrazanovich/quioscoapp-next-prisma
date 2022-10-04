@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import useQuiosco from "../hooks/useQuiosco";
 import { transformCurrency } from "../helpers/helpers";
+import "react-toastify/dist/ReactToastify.css";
 
 const ModalProducto = () => {
   const [cantidad, setCantidad] = useState(1);

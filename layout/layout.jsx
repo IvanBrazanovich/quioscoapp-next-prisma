@@ -4,6 +4,8 @@ import Sidebar from "../components/Sidebar";
 import Modal from "react-modal";
 import useQuiosco from "../hooks/useQuiosco";
 import ModalProducto from "../components/ModalProducto";
+import { ToastContainer } from "react-toastify";
+import Pasos from "../components/Pasos";
 
 const customStyles = {
   content: {
@@ -31,12 +33,17 @@ const Layout = ({ children, pagina = "" }) => {
         <aside className="md:min-w-[24rem]">
           <Sidebar />
         </aside>
-        <main className="h-screen overflow-scroll">{children}</main>
+        <main className="h-screen overflow-scroll pt-10 pb-5 w-full ">
+          <Pasos />
+          {children}
+        </main>
       </div>
 
       <Modal isOpen={modal} style={customStyles} contentLabel="Example Modal">
         <ModalProducto />
       </Modal>
+
+      <ToastContainer />
     </>
   );
 };

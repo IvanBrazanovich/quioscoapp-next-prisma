@@ -7,11 +7,12 @@ import Producto from "../components/Producto";
 
 export default function Home() {
   const { categoriaActual } = useQuiosco();
+
   return (
     <Layout pagina={`Menú ${categoriaActual?.nombre}`}>
-      <div className="pt-10 pb-5 ">
+      <div className=" px-4">
         <h2 className="text-4xl font-black">{categoriaActual?.nombre}</h2>
-        <p className="text-xl mt-10">
+        <p className="text-xl mt-5">
           Elige y personaliza tu pedido a continuación
         </p>
       </div>
