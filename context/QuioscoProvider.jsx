@@ -27,7 +27,7 @@ const QuioscoProvider = ({ children }) => {
     setModal(!modal);
   };
 
-  const handleChangePedido = ({ categoriaId, imagen, ...producto }) => {
+  const handleChangePedido = ({ categoriaId, ...producto }) => {
     const hay = pedido.some((p) => p.id === producto.id);
 
     if (!hay) {
